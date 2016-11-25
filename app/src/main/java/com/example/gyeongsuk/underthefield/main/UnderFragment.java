@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.TextView;
 
@@ -30,10 +31,10 @@ public class UnderFragment extends Fragment {
     private OnFragmentInteractionListener mListener;
     private WebView mSoundCloudPlayer;
 
+
     FirebaseDatabase database;
     DatabaseReference underRef;
     String VIDEO_URL;
-
 
     public UnderFragment() {
 
@@ -64,8 +65,11 @@ public class UnderFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         View view = inflater.inflate(R.layout.fragment_under, container, false);
-        mSoundCloudPlayer =(WebView)view.findViewById(R.id.webView);
+
+        mSoundCloudPlayer = (WebView) view.findViewById(R.id.webView);
+
         database = FirebaseDatabase.getInstance();
 
         underRef = database.getReference("under");
@@ -73,11 +77,11 @@ public class UnderFragment extends Fragment {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 VIDEO_URL = dataSnapshot.getValue().toString();
-                Log.e("check", "url is ="+VIDEO_URL);
+
                 String html = "<!DOCTYPE html><html> <head> <meta charset=\"UTF-8\"><meta name=\"viewport\" content=\"target-densitydpi=high-dpi\" />" +
                         " <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"> <link rel=\"stylesheet\" media=\"screen and (-webkit-device-pixel-ratio:1.5)\" href=\"hdpi.css\" />" +
                         "</head> <body style=\"background:black;margin:0 0 0 0; padding:0 0 0 0;\">" +
-                        " <iframe id=\"sc-widget " + "\" width=\"100%\" height=\"450\"" + // Set Appropriate Width and Height that you want for SoundCloud Player
+                        " <iframe id=\"sc-widget " + "\" width=\"100%\" height=\"460\"" + // Set Appropriate Width and Height that you want for SoundCloud Player
                         " src=\"" + VIDEO_URL   // Set Embedded url
                         + "\" frameborder=\"no\" scrolling=\"no\"></iframe>" +
                         "<script src=\"https://w.soundcloud.com/player/api.js\" type=\"text/javascript\"></script> </body> </html> ";
@@ -86,7 +90,8 @@ public class UnderFragment extends Fragment {
                 mSoundCloudPlayer.getSettings().setJavaScriptEnabled(true);
                 mSoundCloudPlayer.getSettings().setLoadWithOverviewMode(true);
                 mSoundCloudPlayer.getSettings().setUseWideViewPort(true);
-                mSoundCloudPlayer.loadDataWithBaseURL("",html,"text/html", "UTF-8", "");
+                mSoundCloudPlayer.loadDataWithBaseURL("", html, "text/html", "UTF-8", "");
+                //mSoundCloudPlayer.getSettings().setCacheMode(WebSettings.LOAD_CACHE_ONLY);
             }
 
             @Override
@@ -120,7 +125,8 @@ public class UnderFragment extends Fragment {
     @Override
     public void onDetach() {
         super.onDetach();
-        mListener = null;    }
+        mListener = null;
+    }
 
 
     public interface OnFragmentInteractionListener {

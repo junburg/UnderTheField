@@ -19,11 +19,12 @@ import com.google.firebase.database.ValueEventListener;
 
 public class MainActivity extends AppCompatActivity {
 
-    public static String underUrl;
-    static final int FRAGMENT_COUNT = 3;
+
+    static final int FRAGMENT_COUNT = 4;
     UnderFragment uf;
     TheFragment tf;
     FieldFragment ff;
+    HistoryFragment hf;
 
 
 
@@ -34,23 +35,24 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
         uf = new UnderFragment();
         tf = new TheFragment();
         ff = new FieldFragment();
+        hf = new HistoryFragment();
 
         TabLayout tab = (TabLayout) findViewById(R.id.tab);
         tab.addTab(tab.newTab().setText("Under"));
         tab.addTab(tab.newTab().setText("The"));
         tab.addTab(tab.newTab().setText("Field"));
+        tab.addTab(tab.newTab().setText("History"));
 
         ViewPager pager = (ViewPager) findViewById(R.id.pager);
         PagerAdapter adapter = new PagerAdapter(getSupportFragmentManager());
         pager.setAdapter(adapter);
+        pager.setOffscreenPageLimit(4);
 
         pager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tab));
         tab.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(pager));
-
 
 
     }
@@ -73,6 +75,9 @@ public class MainActivity extends AppCompatActivity {
                     break;
                 case 2:
                     fragment = ff;
+                    break;
+                case 3:
+                    fragment = hf;
                     break;
             }
             return fragment;
