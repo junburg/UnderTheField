@@ -2,20 +2,23 @@ package com.example.gyeongsuk.underthefield.main;
 
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.example.gyeongsuk.underthefield.R;
+import com.example.gyeongsuk.underthefield.main.Domestic.DomesticFragment;
+import com.example.gyeongsuk.underthefield.main.Global.GlobalFragment;
+import com.example.gyeongsuk.underthefield.main.History.HistoryFragment;
+import com.example.gyeongsuk.underthefield.main.Recommendation.RecFragment;
 
 public class MainActivity extends AppCompatActivity {
 
-
-    static final int FRAGMENT_COUNT = 4;
+    ViewPager pager;
+    TabLayout tab;
     DomesticFragment df;
-    ForeignFragment ff;
+    GlobalFragment gf;
     HistoryFragment hf;
     RecFragment rf;
 
@@ -26,20 +29,18 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-
         df = new DomesticFragment();
-        ff = new ForeignFragment();
+        gf = new GlobalFragment();
         hf = new HistoryFragment();
         rf = new RecFragment();
 
-        TabLayout tab = (TabLayout) findViewById(R.id.tab);
+        tab = (TabLayout) findViewById(R.id.tab);
         tab.addTab(tab.newTab().setText("국내"));
         tab.addTab(tab.newTab().setText("국외"));
         tab.addTab(tab.newTab().setText("히스토리"));
         tab.addTab(tab.newTab().setText("추천"));
 
-        ViewPager pager = (ViewPager) findViewById(R.id.pager);
+        pager = (ViewPager) findViewById(R.id.pager);
         PagerAdapter adapter = new PagerAdapter(getSupportFragmentManager());
         pager.setAdapter(adapter);
         pager.setOffscreenPageLimit(4);
@@ -51,7 +52,8 @@ public class MainActivity extends AppCompatActivity {
 
     class PagerAdapter extends FragmentStatePagerAdapter {
 
-        public PagerAdapter(FragmentManager fm) {
+
+        public PagerAdapter(android.support.v4.app.FragmentManager fm) {
             super(fm);
         }
 
@@ -63,21 +65,22 @@ public class MainActivity extends AppCompatActivity {
                     fragment = df;
                     break;
                 case 1:
-                    fragment = ff;
+                    fragment = gf;
                     break;
                 case 2:
                     fragment = hf;
                     break;
                 case 3:
                     fragment = rf;
-                    break;
             }
             return fragment;
+
         }
 
         @Override
         public int getCount() {
-            return FRAGMENT_COUNT;
+            return 4;
         }
     }
+
 }
