@@ -32,8 +32,6 @@ public class DomesticFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-    private WebView scView1;
-
     private RecyclerView DomesticRecycler;
     private FirebaseDatabase database;
     private DatabaseReference DomesticRef;
@@ -72,7 +70,7 @@ public class DomesticFragment extends Fragment {
         DomesticRecycler = (RecyclerView) view.findViewById(R.id.DomesticRecycler);
         adapter = new CardAdapterDomestic(cdd, R.layout.fragment_domestic_global_item, getActivity());
         DomesticRecycler.setAdapter(adapter);
-        RecyclerView.LayoutManager manager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
+        RecyclerView.LayoutManager manager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
         DomesticRecycler.setLayoutManager(manager);
 
         database = FirebaseDatabase.getInstance();

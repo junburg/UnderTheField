@@ -59,8 +59,8 @@ public class HistoryFragment extends Fragment {
 
         hPager = (ViewPager) view.findViewById(R.id.hPager);
         hTab = (TabLayout) view.findViewById(R.id.hTab);
-        hTab.addTab(hTab.newTab().setText("국내"));
-        hTab.addTab(hTab.newTab().setText("국외"));
+        hTab.addTab(hTab.newTab().setIcon(R.drawable.ic_terrain_black_24dp));
+        hTab.addTab(hTab.newTab().setIcon(R.drawable.ic_public_black_24dp));
 
         hfManager = getChildFragmentManager();
 

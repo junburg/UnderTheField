@@ -35,10 +35,10 @@ public class MainActivity extends AppCompatActivity {
         rf = new RecFragment();
 
         tab = (TabLayout) findViewById(R.id.tab);
-        tab.addTab(tab.newTab().setText("국내"));
-        tab.addTab(tab.newTab().setText("국외"));
-        tab.addTab(tab.newTab().setText("히스토리"));
-        tab.addTab(tab.newTab().setText("추천"));
+        tab.addTab(tab.newTab().setIcon(R.drawable.ic_terrain_black_24dp));
+        tab.addTab(tab.newTab().setIcon(R.drawable.ic_public_black_24dp));
+        tab.addTab(tab.newTab().setIcon(R.drawable.ic_save_black_24dp));
+        tab.addTab(tab.newTab().setIcon(R.drawable.ic_drafts_black_24dp));
 
         pager = (ViewPager) findViewById(R.id.pager);
         PagerAdapter adapter = new PagerAdapter(getSupportFragmentManager());

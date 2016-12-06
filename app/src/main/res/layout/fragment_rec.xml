@@ -2,56 +2,65 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.gyeongsuk.underthefield.main.Recommendation.RecFragment">
+    tools:context="com.example.gyeongsuk.underthefield.main.Recommendation.RecFragment"
+    >
 
     <!-- TODO: Update blank fragment layout -->
 
-    <LinearLayout
+    <RelativeLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="150dp">
 
-        <TextView
-            android:text="여러분들이 알고있는 멋진 음악들을 추천해주세요!"
-            android:layout_width="match_parent"
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/recText"
-            android:gravity="center_vertical|center_horizontal" />
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true">
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textPersonName"
-            android:ems="10"
-            android:id="@+id/userEt"
-            android:hint="Your Name"
-            android:gravity="center_vertical|center_horizontal" />
+            <TextView
+                android:text="여러분들이 알고있는 멋진 음악들을 추천해주세요!"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/recText"
+                android:gravity="center_vertical|center_horizontal" />
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textPersonName"
-            android:ems="10"
-            android:id="@+id/artistEt"
-            android:hint="Aritst Name"
-            android:gravity="center_vertical|center_horizontal" />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:ems="10"
+                android:id="@+id/userEt"
+                android:hint="Your Name"
+                android:gravity="center_vertical|center_horizontal" />
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textPersonName"
-            android:ems="10"
-            android:id="@+id/titleEt"
-            android:hint="Title"
-            android:gravity="center_vertical|center_horizontal" />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:ems="10"
+                android:id="@+id/artistEt"
+                android:hint="Aritst Name"
+                android:gravity="center_vertical|center_horizontal" />
 
-        <Button
-            android:text="추천"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/sendBtn" />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:ems="10"
+                android:id="@+id/titleEt"
+                android:hint="Title"
+                android:gravity="center_vertical|center_horizontal" />
 
-    </LinearLayout>
+            <Button
+                android:text="추천"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/sendBtn" />
+        </LinearLayout>
+
+    </RelativeLayout>
 
 </FrameLayout>
