@@ -15,6 +15,7 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.gyeongsuk.underthefield.R;
@@ -45,7 +46,7 @@ public class CardAdapterDomestic<T> extends RecyclerView.Adapter<CardAdapterDome
     }
 
     @Override
-    public void onBindViewHolder(CardAdapterDomestic.ViewHolder holder, int position) {
+    public void onBindViewHolder(final CardAdapterDomestic.ViewHolder holder, int position) {
 
         T data = datas.get(position);
         if (data instanceof CardDataDomestic) {
@@ -55,9 +56,9 @@ public class CardAdapterDomestic<T> extends RecyclerView.Adapter<CardAdapterDome
             Log.e("check3", "url = " + url);
 
             String html = "<!DOCTYPE html><html> <head> <meta charset=\"UTF-8\"><meta name=\"viewport\" content=\"target-densitydpi=high-dpi\" />" +
-                    " <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"> <link rel=\"stylesheet\" media=\"screen and (-webkit-device-pixel-ratio:1.5)\" href=\"hdpi.css\" />" +
+                    " <meta name=\"viewport\" content=\"width=device-width, initial-scale=0.52\"> <link rel=\"stylesheet\" media=\"screen and (-webkit-device-pixel-ratio:1.5)\" href=\"hdpi.css\" />" +
                     "</head> <body style=\"background:black;margin:0 0 0 0; padding:0 0 0 0;\"> <iframe id=\"sc-widget " +
-                    "\" width=\"100%\" height=\"460\"" + // Set Appropriate Width and Height that you want for SoundCloud Player
+                    "\" width=\"100%\" height=\"600 \"" + // Set Appropriate Width and Height that you want for SoundCloud Player
                     " src=\"" + url   // Set Embedded url
                     + "\" frameborder=\"no\" scrolling=\"no\"></iframe>" +
                     "<script src=\"https://w.soundcloud.com/player/api.js\" type=\"text/javascript\"></script> </body> </html> ";
@@ -68,6 +69,16 @@ public class CardAdapterDomestic<T> extends RecyclerView.Adapter<CardAdapterDome
             holder.scView.getSettings().setUseWideViewPort(true);
             holder.scView.loadDataWithBaseURL("", html, "text/html", "UTF-8", "");
             holder.scView.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);
+            holder.scView.setWebViewClient(new WebViewClient() {
+
+                @Override
+                public void onPageFinished(final WebView view, final String url) {
+                    super.onPageFinished(view, url);
+                    holder.scView.invalidate();
+                    holder.scView.requestLayout();
+                }
+            });
+
 
 
             if (Build.VERSION.SDK_INT >= 19) {

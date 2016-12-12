@@ -5,18 +5,82 @@
     android:id="@+id/activity_start"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#f9e6e5"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
+    android:padding="16dp"
+    android:background="#131334"
     tools:context="com.example.gyeongsuk.underthefield.start.StartActivity">
 
     <ImageView
         android:id="@+id/startImage"
+
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:srcCompat="@mipmap/startimage" />
+        app:srcCompat="@mipmap/startimage"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true" />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <TextView
+            android:id="@+id/startMainText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Under"
+            android:textColor="#6a6a6a"
+            android:textSize="60sp"
+            android:gravity="center_vertical|center_horizontal"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:textStyle="normal|bold"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+
+        <TextView
+            android:id="@+id/startMainText2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="The"
+            android:textColor="#FF6A6A6A"
+            android:textSize="60sp"
+            android:gravity="center_vertical|center_horizontal"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:textStyle="normal|bold"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+
+        <TextView
+            android:id="@+id/startMainText3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/startMainText2"
+            android:text="Field"
+            android:textColor="#FF6A6A6A"
+            android:textSize="60sp"
+            android:gravity="center_vertical|center_horizontal"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:textStyle="normal|bold"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+    </LinearLayout>
+
+    <com.matthewtamlin.sliding_intro_screen_library.indicators.DotIndicator
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="370dp"
+        android:id="@+id/indicator">
+
+    </com.matthewtamlin.sliding_intro_screen_library.indicators.DotIndicator>
 
     <Button
         android:id="@+id/startButton"
@@ -29,5 +93,14 @@
         android:layout_alignParentStart="true"
         android:background="@drawable/border"
         android:text="시작하기"
-        />
+        android:textColor="#ffffff" />
+
+    <android.support.v4.view.ViewPager
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/startPager"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"></android.support.v4.view.ViewPager>
+
 </RelativeLayout>

@@ -51,9 +51,9 @@ public class CardAdapterGlobal<T> extends RecyclerView.Adapter<CardAdapterGlobal
             Log.e("check3", "url = " + url);
 
             String html = "<!DOCTYPE html><html> <head> <meta charset=\"UTF-8\"><meta name=\"viewport\" content=\"target-densitydpi=high-dpi\" />" +
-                    " <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"> <link rel=\"stylesheet\" media=\"screen and (-webkit-device-pixel-ratio:1.5)\" href=\"hdpi.css\" />" +
+                    " <meta name=\"viewport\" content=\"width=device-width, initial-scale=0.52\"> <link rel=\"stylesheet\" media=\"screen and (-webkit-device-pixel-ratio:1.5)\" href=\"hdpi.css\" />" +
                     "</head> <body style=\"background:black;margin:0 0 0 0; padding:0 0 0 0;\"> <iframe id=\"sc-widget " +
-                    "\" width=\"100%\" height=\"460\"" + // Set Appropriate Width and Height that you want for SoundCloud Player
+                    "\" width=\"100%\" height=\"600 \"" + // Set Appropriate Width and Height that you want for SoundCloud Player
                     " src=\"" + url   // Set Embedded url
                     + "\" frameborder=\"no\" scrolling=\"no\"></iframe>" +
                     "<script src=\"https://w.soundcloud.com/player/api.js\" type=\"text/javascript\"></script> </body> </html> ";

@@ -1,16 +1,21 @@
 package com.example.gyeongsuk.underthefield.main.History;
 
+import android.content.res.ColorStateList;
+import android.graphics.PorterDuff;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.gyeongsuk.underthefield.R;
+import com.example.gyeongsuk.underthefield.main.MainActivity;
 
 public class HistoryFragment extends Fragment {
 
@@ -59,8 +64,9 @@ public class HistoryFragment extends Fragment {
 
         hPager = (ViewPager) view.findViewById(R.id.hPager);
         hTab = (TabLayout) view.findViewById(R.id.hTab);
-        hTab.addTab(hTab.newTab().setIcon(R.drawable.ic_terrain_black_24dp));
-        hTab.addTab(hTab.newTab().setIcon(R.drawable.ic_public_black_24dp));
+        hTab.addTab(hTab.newTab().setText("국내"));
+        hTab.addTab(hTab.newTab().setText("국외"));
+
 
         hfManager = getChildFragmentManager();
 
@@ -68,8 +74,10 @@ public class HistoryFragment extends Fragment {
         hPager.setAdapter(adapter);
         hPager.setOffscreenPageLimit(2);
 
+
         hTab.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(hPager));
         hPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(hTab));
+
 
 
         return view;

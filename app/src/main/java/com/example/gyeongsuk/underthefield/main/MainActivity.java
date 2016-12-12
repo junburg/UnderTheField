@@ -1,8 +1,11 @@
 package com.example.gyeongsuk.underthefield.main;
 
+import android.content.Context;
+import android.graphics.PorterDuff;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -21,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
     GlobalFragment gf;
     HistoryFragment hf;
     RecFragment rf;
-
+    Context context;
 
 
     @Override
@@ -45,12 +48,34 @@ public class MainActivity extends AppCompatActivity {
         pager.setAdapter(adapter);
         pager.setOffscreenPageLimit(4);
 
-        tab.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(pager));
+        tab.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(pager) {
+
+                                         @Override
+                                         public void onTabSelected(TabLayout.Tab tab) {
+                                             super.onTabSelected(tab);
+                                             int tabIconColor = ContextCompat.getColor(MainActivity.this, R.color.tabSelectedIconColor);
+                                             tab.getIcon().setColorFilter(tabIconColor, PorterDuff.Mode.SRC_IN);
+                                         }
+
+                                         @Override
+                                         public void onTabUnselected(TabLayout.Tab tab) {
+                                             super.onTabUnselected(tab);
+                                             int tabIconColor =ContextCompat.getColor(MainActivity.this ,R.color.tabUnselectedIconColor);
+                                             tab.getIcon().setColorFilter(tabIconColor, PorterDuff.Mode.SRC_IN);
+                                         }
+
+                                         @Override
+                                         public void onTabReselected(TabLayout.Tab tab) {
+                                             super.onTabReselected(tab);
+                                         }
+                                     }
+        );
         pager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tab));
+
 
     }
 
-    class PagerAdapter extends FragmentStatePagerAdapter {
+    private class PagerAdapter extends FragmentStatePagerAdapter {
 
 
         public PagerAdapter(android.support.v4.app.FragmentManager fm) {
