@@ -20,9 +20,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity android:name=".main.MainActivity"
-            android:windowSoftInputMode="adjustNothing"/>
-        <activity android:name=".main.SplashActivity"></activity>
+        android:windowSoftInputMode="adjustNothing"/>
     </application>
 
 </manifest>

@@ -1,5 +1,6 @@
 package com.example.gyeongsuk.underthefield.main.Domestic;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 
 import android.os.Build;
@@ -19,6 +20,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.gyeongsuk.underthefield.R;
+import com.example.gyeongsuk.underthefield.main.MainActivity;
 
 import java.util.List;
 
@@ -27,6 +29,7 @@ import java.util.List;
  */
 
 public class CardAdapterDomestic<T> extends RecyclerView.Adapter<CardAdapterDomestic.ViewHolder> {
+
 
     List<T> datas;
     int itemLayout;
@@ -55,7 +58,7 @@ public class CardAdapterDomestic<T> extends RecyclerView.Adapter<CardAdapterDome
             String url = ((CardDataDomestic) data).getDomesticScUrl();
             Log.e("check3", "url = " + url);
 
-            String html = "<!DOCTYPE html><html> <head> <meta charset=\"UTF-8\"><meta name=\"viewport\" content=\"target-densitydpi=high-dpi\" />" +
+                    final String html = "<!DOCTYPE html><html> <head> <meta charset=\"UTF-8\"><meta name=\"viewport\" content=\"target-densitydpi=high-dpi\" />" +
                     " <meta name=\"viewport\" content=\"width=device-width, initial-scale=0.52\"> <link rel=\"stylesheet\" media=\"screen and (-webkit-device-pixel-ratio:1.5)\" href=\"hdpi.css\" />" +
                     "</head> <body style=\"background:black;margin:0 0 0 0; padding:0 0 0 0;\"> <iframe id=\"sc-widget " +
                     "\" width=\"100%\" height=\"610 \"" + // Set Appropriate Width and Height that you want for SoundCloud Player
@@ -63,21 +66,13 @@ public class CardAdapterDomestic<T> extends RecyclerView.Adapter<CardAdapterDome
                     + "\" frameborder=\"no\" scrolling=\"no\"></iframe>" +
                     "<script src=\"https://w.soundcloud.com/player/api.js\" type=\"text/javascript\"></script> </body> </html> ";
 
+            holder.scView.setWebViewClient(new MyWebViewClient(ds));
             holder.scView.setVisibility(View.VISIBLE);
             holder.scView.getSettings().setJavaScriptEnabled(true);
             holder.scView.getSettings().setLoadWithOverviewMode(true);
             holder.scView.getSettings().setUseWideViewPort(true);
             holder.scView.loadDataWithBaseURL("", html, "text/html", "UTF-8", "");
             holder.scView.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);
-            holder.scView.setWebViewClient(new WebViewClient() {
-
-                @Override
-                public void onPageFinished(final WebView view, final String url) {
-                    super.onPageFinished(view, url);
-                    holder.scView.invalidate();
-                    holder.scView.requestLayout();
-                }
-            });
 
 
 
@@ -114,7 +109,7 @@ public class CardAdapterDomestic<T> extends RecyclerView.Adapter<CardAdapterDome
 
         CardView DomesticGlobalCard;
         TextView cardUserName;
-        WebView scView;
+       public static WebView scView;
 
 
         public ViewHolder(View itemView) {

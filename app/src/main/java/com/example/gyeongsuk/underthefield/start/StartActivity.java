@@ -1,6 +1,5 @@
 package com.example.gyeongsuk.underthefield.start;
 
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
@@ -11,21 +10,15 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.gyeongsuk.underthefield.R;
 import com.example.gyeongsuk.underthefield.main.MainActivity;
-import com.example.gyeongsuk.underthefield.main.SplashActivity;
-import com.matthewtamlin.sliding_intro_screen_library.indicators.Dot;
 import com.matthewtamlin.sliding_intro_screen_library.indicators.DotIndicator;
-
-import static com.example.gyeongsuk.underthefield.R.id.pager;
 
 public class StartActivity extends AppCompatActivity {
 
@@ -106,7 +99,7 @@ public class StartActivity extends AppCompatActivity {
         startBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(StartActivity.this, SplashActivity.class);
+                Intent intent = new Intent(StartActivity.this, MainActivity.class);
                 startActivity(intent);
                 finish();
             }

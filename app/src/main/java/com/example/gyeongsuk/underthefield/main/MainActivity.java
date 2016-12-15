@@ -1,9 +1,14 @@
 package com.example.gyeongsuk.underthefield.main;
 
 
+import android.app.Activity;
+import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 
+import android.os.Handler;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentStatePagerAdapter;
@@ -11,9 +16,13 @@ import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.webkit.WebChromeClient;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.ImageView;
 
 import com.example.gyeongsuk.underthefield.R;
+import com.example.gyeongsuk.underthefield.main.Domestic.CardAdapterDomestic;
 import com.example.gyeongsuk.underthefield.main.Domestic.DomesticFragment;
 import com.example.gyeongsuk.underthefield.main.Global.GlobalFragment;
 import com.example.gyeongsuk.underthefield.main.History.HistoryFragment;
@@ -21,6 +30,8 @@ import com.example.gyeongsuk.underthefield.main.Recommendation.RecFragment;
 
 public class MainActivity extends AppCompatActivity {
 
+    public static boolean first = true;
+    public static ProgressDialog pd;
     ViewPager pager;
     TabLayout tab;
     DomesticFragment df;
@@ -28,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
     HistoryFragment hf;
     RecFragment rf;
     ImageView mainIv;
+    Context context;
 
 
     @Override
@@ -35,10 +47,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        pd = ProgressDialog.show(this,"","Loading",true);
+
         df = new DomesticFragment();
         gf = new GlobalFragment();
         hf = new HistoryFragment();
         rf = new RecFragment();
+
+
 
         mainIv = (ImageView)findViewById(R.id.mainImage);
         mainIv.setColorFilter(Color.parseColor("#BDBDBD"), PorterDuff.Mode.MULTIPLY);
@@ -77,6 +93,7 @@ public class MainActivity extends AppCompatActivity {
                                      }
         );
         pager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tab));
+
 
 
     }
