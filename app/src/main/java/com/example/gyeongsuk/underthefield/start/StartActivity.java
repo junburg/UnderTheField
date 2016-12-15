@@ -3,7 +3,9 @@ package com.example.gyeongsuk.underthefield.start;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.graphics.Typeface;
+import android.os.Build;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -11,12 +13,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.gyeongsuk.underthefield.R;
 import com.example.gyeongsuk.underthefield.main.MainActivity;
+import com.example.gyeongsuk.underthefield.main.SplashActivity;
 import com.matthewtamlin.sliding_intro_screen_library.indicators.Dot;
 import com.matthewtamlin.sliding_intro_screen_library.indicators.DotIndicator;
 
@@ -27,12 +32,12 @@ public class StartActivity extends AppCompatActivity {
     DotIndicator indicator;
     ViewPager startPager;
     ImageView startIv;
-    TextView tv, tv2, tv3;
+    TextView tv;
     Button startBtn;
     FirstTextFragment ftf;
     SecondTextFragment stf;
     ThirdTextFragment ttf;
-    int pageCount;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +55,7 @@ public class StartActivity extends AppCompatActivity {
         startPager.setOffscreenPageLimit(3);
 
         indicator = (DotIndicator)findViewById(R.id.indicator);
-        indicator.setSelectedDotColor(Color.parseColor("#FFE12412"));
+        indicator.setSelectedDotColor(Color.parseColor("#00257b"));
         indicator.setUnselectedDotColor(Color.parseColor("#ffffff"));
         indicator.setSpacingBetweenDotsDp(40);
         indicator.setSelectedDotDiameterDp(15);
@@ -90,24 +95,34 @@ public class StartActivity extends AppCompatActivity {
             }
         });
         tv = (TextView)findViewById(R.id.startMainText);
-        tv2 = (TextView)findViewById(R.id.startMainText2);
-        tv3 = (TextView)findViewById(R.id.startMainText3);
+
         Typeface tf = Typeface.createFromAsset(getAssets(), "harlowsi.ttf");
         tv.setTypeface(tf);
-        tv2.setTypeface(tf);
-        tv3.setTypeface(tf);
+
         startIv = (ImageView)findViewById(R.id.startImage);
+        startIv.setColorFilter(Color.parseColor("#BDBDBD"), PorterDuff.Mode.MULTIPLY);
+
         startBtn = (Button)findViewById(R.id.startButton);
         startBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(StartActivity.this, MainActivity.class);
+                Intent intent = new Intent(StartActivity.this, SplashActivity.class);
                 startActivity(intent);
                 finish();
             }
         });
 
-
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT) {
+            return;
+        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            getWindow().clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+            getWindow().setStatusBarColor(Color.TRANSPARENT);
+        } else {
+            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        }
     }
 
 

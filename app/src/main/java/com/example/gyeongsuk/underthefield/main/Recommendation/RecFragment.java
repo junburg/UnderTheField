@@ -26,9 +26,11 @@ public class RecFragment extends Fragment {
     private OnFragmentInteractionListener mListener;
 
     TextView recText;
+    TextView contactText;
     EditText userEt;
     EditText artistEt;
     EditText titleEt;
+    EditText urlEt;
     Button sendBtn;
 
     FirebaseDatabase database;
@@ -65,10 +67,12 @@ public class RecFragment extends Fragment {
         database = FirebaseDatabase.getInstance();
         recommendationRef = database.getReference("recommendation");
 
+        contactText = (TextView) view.findViewById(R.id.contactTv);
         recText = (TextView) view.findViewById(R.id.recText);
         userEt = (EditText) view.findViewById(R.id.userEt);
         artistEt = (EditText) view.findViewById(R.id.artistEt);
         titleEt = (EditText) view.findViewById(R.id.titleEt);
+        urlEt = (EditText) view.findViewById(R.id.urlEt);
         sendBtn = (Button) view.findViewById(R.id.sendBtn);
         sendBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,12 +80,14 @@ public class RecFragment extends Fragment {
                 String userName = userEt.getText().toString().trim();
                 String artist = artistEt.getText().toString().trim();
                 String title = titleEt.getText().toString().trim();
+                String url = urlEt.getText().toString().trim();
 
                 if (!"".equals(userName) && !"".equals(artist) && !"".equals(title)) {
-                    userRecommendation(userName, artist, title);
+                    userRecommendation(userName, artist, title, url);
                     userEt.setText("");
                     artistEt.setText("");
                     titleEt.setText("");
+                    urlEt.setText("");
                     Toast.makeText(getActivity(), "감사합니다! 추천이 완료되었습니다!", Toast.LENGTH_LONG).show();
                 } else {
                     Toast.makeText(getActivity(), "닉네임, 아티스트 이름, 노래 제목을 입력하세요", Toast.LENGTH_LONG).show();
@@ -91,8 +97,8 @@ public class RecFragment extends Fragment {
         return view;
     }
 
-    private void userRecommendation(String userName, String artist, String title) {
-        User user = new User(artist, title);
+    private void userRecommendation(String userName, String artist, String title, String url) {
+        User user = new User(artist, title, url);
         recommendationRef.child(userName).setValue(user);
 
     }

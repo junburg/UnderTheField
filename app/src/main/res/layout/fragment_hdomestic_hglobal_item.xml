@@ -11,6 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/historyCard"
+
         >
 
         <LinearLayout
@@ -20,8 +21,8 @@
             android:layout_below="@+id/hCard"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:padding="5dp"
-
+            android:padding="10dp"
+            android:background="#FFF0EDEA"
             >
 
             <LinearLayout
@@ -31,13 +32,15 @@
                 >
 
                 <TextView
-                    android:text="Recommended By"
+                    android:text="By"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/hCardRec"
-                    android:layout_weight="0.5"
+                    android:layout_weight="0.6"
                     android:gravity="right"
+                    android:textSize="16sp"
                     android:paddingRight="5dp"
+                    android:textColor="#000000"
                     />
 
                 <TextView
@@ -45,7 +48,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/hCardUserName"
-                    android:layout_weight="0.7"
+                    android:layout_weight="0.5"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+
                     />
 
             </LinearLayout>
@@ -63,6 +69,8 @@
                     android:id="@+id/hCardArtist"
                     android:layout_weight="1"
                     android:gravity="right"
+                    android:textSize="16sp"
+                    android:textColor="#000000"
                     android:paddingRight="5dp" />
 
                 <TextView
@@ -70,6 +78,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/hCardArtistName"
+                    android:textStyle="bold"
+                    android:textSize="18sp"
                     android:layout_weight="1" />
 
             </LinearLayout>
@@ -86,6 +96,8 @@
                     android:id="@+id/hCardTitle"
                     android:layout_weight="1.1"
                     android:gravity="right"
+                    android:textSize="16sp"
+                    android:textColor="#000000"
                     android:paddingRight="5dp" />
 
                 <TextView
@@ -93,7 +105,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/hCardTitleName"
+                    android:textStyle="bold"
+                    android:textSize="18sp"
                     android:layout_weight="1" />
+
             </LinearLayout>
 
             <Button
@@ -104,7 +119,7 @@
                 android:layout_weight="1"
                 android:layout_below="@+id/hCardTitleName"
                 android:layout_centerHorizontal="true"
-                android:background="@drawable/border"/>
+                android:background="@drawable/button_design2"/>
 
 
         </LinearLayout>

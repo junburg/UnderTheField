@@ -14,7 +14,7 @@
             android:text="IF YOU DON'T KNOW,"
             android:layout_marginTop="250dp"
             android:gravity="center_vertical|center_horizontal"
-            android:textSize="20sp"
+            android:textSize="23sp"
             android:id="@+id/thirdText"
             android:textStyle="bold"
             android:textColor="#ffffff"/>
@@ -24,7 +24,7 @@
             android:layout_height="wrap_content"
             android:text=" NOW YOU KNOW"
             android:gravity="center_vertical|center_horizontal"
-            android:textSize="20sp"
+            android:textSize="23sp"
             android:id="@+id/thirdText2"
             android:textStyle="bold"
             android:textColor="#ffffff"

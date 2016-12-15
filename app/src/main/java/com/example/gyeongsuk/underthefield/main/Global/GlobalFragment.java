@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.gyeongsuk.underthefield.R;
 import com.example.gyeongsuk.underthefield.main.Domestic.CardAdapterDomestic;
@@ -37,7 +38,7 @@ public class GlobalFragment extends Fragment {
     public static ArrayList<CardDataGlobal> cdg = new ArrayList<>();
     private CardAdapterGlobal<CardDataGlobal> adapter;
 
-
+    private TextView globalIntro;
     public GlobalFragment() {
         // Required empty public constructor
     }
@@ -64,6 +65,8 @@ public class GlobalFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_global, container, false);
+
+        globalIntro=(TextView)view.findViewById(R.id.globalIntro);
 
         GlobalRecycler = (RecyclerView) view.findViewById(R.id.GlobalRecycler);
         adapter = new CardAdapterGlobal(cdg, R.layout.fragment_domestic_global_item, getActivity());

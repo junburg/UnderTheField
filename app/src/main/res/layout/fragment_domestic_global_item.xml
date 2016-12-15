@@ -7,7 +7,6 @@
     android:layout_marginRight="30dp"
     android:layout_marginLeft="30dp"
 
-
     >
 
     <android.support.v7.widget.CardView
@@ -22,17 +21,11 @@
             android:layout_height="match_parent"
             android:gravity="center_vertical|center_horizontal"
             android:orientation="vertical"
-
+            android:background="#FFF0EDEA"
+            android:padding="5dp"
 
             >
 
-            <TextView
-                android:id="@+id/cardRec"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical|center_horizontal"
-                android:text="Recommended By"
-                />
 
             <TextView
                 android:id="@+id/cardUserName"
@@ -40,6 +33,11 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical|center_horizontal"
                 android:text="userName"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:padding="5dp"
+
+
                 />
 
             <WebView
@@ -47,7 +45,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical|center_horizontal"
-
                 />
         </LinearLayout>
 

@@ -1,7 +1,9 @@
 package com.example.gyeongsuk.underthefield.main;
 
-import android.content.Context;
+
+import android.graphics.Color;
 import android.graphics.PorterDuff;
+
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentStatePagerAdapter;
@@ -9,6 +11,7 @@ import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.ImageView;
 
 import com.example.gyeongsuk.underthefield.R;
 import com.example.gyeongsuk.underthefield.main.Domestic.DomesticFragment;
@@ -24,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
     GlobalFragment gf;
     HistoryFragment hf;
     RecFragment rf;
-    Context context;
+    ImageView mainIv;
 
 
     @Override
@@ -36,6 +39,9 @@ public class MainActivity extends AppCompatActivity {
         gf = new GlobalFragment();
         hf = new HistoryFragment();
         rf = new RecFragment();
+
+        mainIv = (ImageView)findViewById(R.id.mainImage);
+        mainIv.setColorFilter(Color.parseColor("#BDBDBD"), PorterDuff.Mode.MULTIPLY);
 
         tab = (TabLayout) findViewById(R.id.tab);
         tab.addTab(tab.newTab().setIcon(R.drawable.ic_terrain_black_24dp));

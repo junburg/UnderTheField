@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
+import android.widget.TextView;
 
 import com.example.gyeongsuk.underthefield.R;
 import com.example.gyeongsuk.underthefield.main.History.CardAdapterHdomestic;
@@ -37,6 +38,8 @@ public class DomesticFragment extends Fragment {
     private DatabaseReference DomesticRef;
     public static ArrayList<CardDataDomestic> cdd = new ArrayList<>();
     private CardAdapterDomestic<CardDataDomestic> adapter;
+
+    private TextView domesticIntro;
 
     public DomesticFragment() {
         // Required empty public constructor
@@ -67,6 +70,7 @@ public class DomesticFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_domestic, container, false);
 
+        domesticIntro=(TextView)view.findViewById(R.id.domesticIntro);
         DomesticRecycler = (RecyclerView) view.findViewById(R.id.DomesticRecycler);
         adapter = new CardAdapterDomestic(cdd, R.layout.fragment_domestic_global_item, getActivity());
         DomesticRecycler.setAdapter(adapter);
