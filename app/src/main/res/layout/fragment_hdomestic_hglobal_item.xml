@@ -105,6 +105,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/hCardTitleName"
+                    android:layout_marginBottom="7dp"
                     android:textStyle="bold"
                     android:textSize="18sp"
                     android:layout_weight="1" />
@@ -112,7 +113,9 @@
             </LinearLayout>
 
             <Button
-                android:text="Go Artist's SoundCloud"
+                android:text="Go Artist Page"
+                android:textStyle="bold"
+                android:textColor="#363636"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/goBtn"

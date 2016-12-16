@@ -31,7 +31,7 @@ import com.example.gyeongsuk.underthefield.main.Recommendation.RecFragment;
 public class MainActivity extends AppCompatActivity {
 
     public static boolean first = true;
-    public static ProgressDialog pd;
+    public static CustomDialog cd;
     ViewPager pager;
     TabLayout tab;
     DomesticFragment df;
@@ -47,7 +47,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        pd = ProgressDialog.show(this,"","Loading",true);
+        cd = new CustomDialog(this);
+        cd.show();
 
         df = new DomesticFragment();
         gf = new GlobalFragment();

@@ -16,6 +16,6 @@ public class MyWebViewClient extends WebViewClient {
     @Override
     public void onPageFinished(WebView view, String url){
         super.onPageFinished(view, url);
-        MainActivity.pd.dismiss();
+        MainActivity.cd.dismiss();
     }
 }

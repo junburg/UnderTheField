@@ -59,14 +59,14 @@ public class CardAdapterDomestic<T> extends RecyclerView.Adapter<CardAdapterDome
             Log.e("check3", "url = " + url);
 
                     final String html = "<!DOCTYPE html><html> <head> <meta charset=\"UTF-8\"><meta name=\"viewport\" content=\"target-densitydpi=high-dpi\" />" +
-                    " <meta name=\"viewport\" content=\"width=device-width, initial-scale=0.52\"> <link rel=\"stylesheet\" media=\"screen and (-webkit-device-pixel-ratio:1.5)\" href=\"hdpi.css\" />" +
-                    "</head> <body style=\"background:black;margin:0 0 0 0; padding:0 0 0 0;\"> <iframe id=\"sc-widget " +
-                    "\" width=\"100%\" height=\"610 \"" + // Set Appropriate Width and Height that you want for SoundCloud Player
+                    " <meta name=\"viewport\" content=\"width=device-width, initial-scale=0.55\"> <link rel=\"stylesheet\" media=\"screen and (-webkit-device-pixel-ratio:1.5)\" href=\"hdpi.css\" />" +
+                    "</head> <body style=\"background:black;margin:0 0 0 5; padding:0 0 0 0;\"> <iframe id=\"sc-widget " +
+                    "\" width=\"100%\" height=\"580 \"" + // Set Appropriate Width and Height that you want for SoundCloud Player
                     " src=\"" + url   // Set Embedded url
                     + "\" frameborder=\"no\" scrolling=\"no\"></iframe>" +
                     "<script src=\"https://w.soundcloud.com/player/api.js\" type=\"text/javascript\"></script> </body> </html> ";
 
-            holder.scView.setWebViewClient(new MyWebViewClient(ds));
+            holder.scView.setWebViewClient(new MyWebViewClient());
             holder.scView.setVisibility(View.VISIBLE);
             holder.scView.getSettings().setJavaScriptEnabled(true);
             holder.scView.getSettings().setLoadWithOverviewMode(true);
