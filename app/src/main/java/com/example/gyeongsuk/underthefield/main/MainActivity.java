@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
     RecFragment rf;
     ImageView mainIv;
     Context context;
+    BackPressClose backPressClose;
 
 
     @Override
@@ -50,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
         cd = new CustomDialog(this);
         cd.show();
 
+        backPressClose = new BackPressClose(this);
         df = new DomesticFragment();
         gf = new GlobalFragment();
         hf = new HistoryFragment();
@@ -97,6 +99,11 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        backPressClose.onBackPressed();
     }
 
     private class PagerAdapter extends FragmentStatePagerAdapter {

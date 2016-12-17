@@ -7,13 +7,14 @@
     <application
         android:allowBackup="true"
         android:hardwareAccelerated="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/marea_icon"
         android:label="@string/app_name"
         android:screenOrientation="portrait"
         android:supportsRtl="true"
-
         android:theme="@style/AppTheme">
-        <activity android:name=".start.StartActivity">
+        <activity
+            android:name=".start.StartActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -21,8 +22,10 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".main.MainActivity"
-        android:windowSoftInputMode="adjustNothing"/>
+        <activity
+            android:name=".main.MainActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustNothing" />
     </application>
 
 </manifest>
